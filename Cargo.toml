@@ -1,0 +1,6 @@
+[package]
+name = "codeforces-rust"
+version = "0.1.0"
+authors = ["Chris Xue <chrisxue815@gmail.com>"]
+
+[dependencies]
