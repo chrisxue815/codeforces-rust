@@ -45,5 +45,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {}
+    fn it_works() {
+        assert_eq!(6, num_advanced(8, 5, &vec![10, 9, 8, 7, 7, 7, 5, 5]));
+        assert_eq!(0, num_advanced(4, 2, &vec![0, 0, 0, 0]));
+    }
 }
