@@ -12,16 +12,16 @@ pub fn main() {
 }
 
 pub fn is_dangerous(pos: &str) -> bool {
-    let (pos1, pos2) = pos.split_at(1);
-    let mut last = pos1.bytes().nth(0).unwrap();
+    let mut pos = pos.bytes();
+    let mut prev = pos.next().unwrap();
     let mut count = 1;
 
-    for c in pos2.bytes() {
-        if c == last {
+    for c in pos {
+        if c == prev {
             count += 1;
         } else {
             count = 1;
-            last = c;
+            prev = c;
         }
 
         if count == 7 {
