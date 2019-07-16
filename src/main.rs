@@ -1,27 +1,27 @@
 #![allow(dead_code)]
 
-mod p1a;
-mod p4a;
-mod p50a;
-mod p58a;
-mod p71a;
-mod p96a;
-mod p112a;
-mod p115a;
-mod p116a;
-mod p118a;
-mod p122a;
-mod p131a;
-mod p133a;
-mod p158a;
-mod p158b;
-mod p160a;
-mod p231a;
-mod p266a;
-mod p281a;
-mod p282a;
-mod p339a;
+mod p0001a;
+mod p0004a;
+mod p0050a;
+mod p0058a;
+mod p0071a;
+mod p0096a;
+mod p0112a;
+mod p0115a;
+mod p0116a;
+mod p0118a;
+mod p0122a;
+mod p0131a;
+mod p0133a;
+mod p0158a;
+mod p0158b;
+mod p0160a;
+mod p0231a;
+mod p0266a;
+mod p0281a;
+mod p0282a;
+mod p0339a;
 
 pub fn main() {
-    p115a::main();
+    p0115a::main();
 }
