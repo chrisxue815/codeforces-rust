@@ -1,70 +1,57 @@
+use std::i32;
 use std::io;
 
 pub fn main() {
-    let n = read_num();
-    let mut p = Vec::with_capacity(n as usize);
+    let n = read_i32() as usize;
+    let mut p = Vec::with_capacity(n + 1);
+    p.push(-1);
 
     for _ in 0..n {
-        p.push(read_num());
+        p.push(read_i32());
     }
 
-    print!("{}", num_groups(&p));
+    let result = num_groups(&mut p);
+    print!("{}", result);
 }
 
-pub fn read_num() -> i32 {
+pub fn read_i32() -> i32 {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
     line.trim_end().parse::<i32>().unwrap()
 }
 
-pub fn num_groups(p: &[i32]) -> i32 {
-    let n = p.len();
-    let levels = vec![0; n].as_mut_ptr();
-    let mut stack = Vec::with_capacity(n);
-    let mut max_level = 0;
+pub fn num_groups(p: &mut [i32]) -> i32 {
+    let n = p.len() - 1;
+    const HIGHEST: i32 = -1;
+    let mut lowest = HIGHEST;
 
-    unsafe {
-        for i in 0..n {
-            if *levels.offset(i as isize) != 0 {
-                continue;
-            }
+    for i in 1..=n {
+        if p[i] < 0 {
+            continue;
+        }
 
-            let mut curr_index = i;
-            let mut level = 1;
+        let mut j = i;
+        let mut levels = 0;
+        while p[j] >= 1 {
+            j = p[j] as usize;
+            levels += 1;
+        }
 
-            loop {
-                let next_index = p[curr_index] - 1;
-                let curr_level = *levels.offset(curr_index as isize);
+        let top = p[j];
+        let bottom = top - levels;
+        if lowest > bottom {
+            lowest = bottom
+        }
 
-                // the current node is a new root
-                if next_index == -2 {
-                    *levels.offset(curr_index as isize) = level;
-                }
-
-                // the current node is already in a tree
-                if curr_level != 0 {
-                    level = curr_level;
-                }
-
-                if next_index == -2 || curr_level != 0 {
-                    while let Some(curr_index) = stack.pop() {
-                        level += 1;
-                        *levels.offset(curr_index as isize) = level;
-                    }
-                    break;
-                } else {
-                    stack.push(curr_index);
-                    curr_index = next_index as usize;
-                }
-            }
-
-            if max_level < level {
-                max_level = level;
-            }
+        j = i;
+        for level in bottom..top {
+            let next = p[j];
+            p[j] = level;
+            j = next as usize;
         }
     }
 
-    max_level
+    HIGHEST - lowest + 1
 }
 
 #[cfg(test)]
@@ -73,7 +60,7 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert_eq!(3, num_groups(&vec![-1, 1, 2, 1, -1]));
-        assert_eq!(4, num_groups(&vec![4, 1, -1, 3]));
+        assert_eq!(3, num_groups(&mut vec![5, -1, 1, 2, 1, -1]));
+        assert_eq!(4, num_groups(&mut vec![4, 4, 1, -1, 3]));
     }
 }
