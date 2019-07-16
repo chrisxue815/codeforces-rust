@@ -82,7 +82,11 @@ pub fn num_flagstones(n: u64, m: u64, a: u64) -> u64 {
 
 #[inline]
 pub fn ceil_div(x: u64, y: u64) -> u64 {
-    if x % y != 0 { x / y + 1 } else { x / y }
+    if x % y != 0 {
+        x / y + 1
+    } else {
+        x / y
+    }
 }
 
 #[cfg(test)]
@@ -92,6 +96,9 @@ mod tests {
     #[test]
     fn it_works() {
         assert_eq!(4, num_flagstones(6, 6, 4));
-        assert_eq!(1000000000000000000, num_flagstones(1000000000, 1000000000, 1));
+        assert_eq!(
+            1000000000000000000,
+            num_flagstones(1000000000, 1000000000, 1)
+        );
     }
 }

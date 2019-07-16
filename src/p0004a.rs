@@ -73,7 +73,11 @@ pub fn main() {
 
 #[inline]
 pub fn dividable(w: u32) -> &'static str {
-    if w != 2 && w % 2 == 0 { "YES" } else { "NO" }
+    if w != 2 && w % 2 == 0 {
+        "YES"
+    } else {
+        "NO"
+    }
 }
 
 #[cfg(test)]
