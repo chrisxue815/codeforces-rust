@@ -4,7 +4,7 @@ use std::str;
 pub fn main() {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    let line = line.trim_right();
+    let line = line.trim_end();
 
     let output = if any_hq9p_output(line) { "YES" } else { "NO" };
 

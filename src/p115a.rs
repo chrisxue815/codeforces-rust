@@ -14,7 +14,7 @@ pub fn main() {
 pub fn read_num() -> i32 {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    line.trim_right().parse::<i32>().unwrap()
+    line.trim_end().parse::<i32>().unwrap()
 }
 
 pub fn num_groups(p: &[i32]) -> i32 {

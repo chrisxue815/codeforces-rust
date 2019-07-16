@@ -1,10 +1,9 @@
 use std::io;
-use std::str;
 
 pub fn main() {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    let num: u32 = line.trim_right().parse().unwrap();
+    let num: u32 = line.trim_end().parse().unwrap();
 
     let output = if almost_lucky(num) { "YES" } else { "NO" };
 

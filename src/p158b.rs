@@ -1,6 +1,5 @@
 // text_io macros
 
-#[macro_export]
 macro_rules! read(
     () => { read!("{}") };
     ($text:expr) => {{
@@ -16,7 +15,6 @@ macro_rules! read(
 );
 
 /// This macro allows to pass several variables so multiple values can be read
-#[macro_export]
 macro_rules! scan(
     ($text:expr, $($arg:expr),*) => {
         scan!(::std::io::stdin().bytes().map(|c| c.unwrap()) => $text, $($arg),*) ;
@@ -75,7 +73,7 @@ pub fn main() {
     let mut line = String::new();
     stdin.read_line(&mut line).unwrap();
 
-    let n = line.trim_right().parse::<u32>().unwrap();
+    let n = line.trim_end().parse::<u32>().unwrap();
 
     let mut s = vec![0, 0, 0, 0, 0];
 

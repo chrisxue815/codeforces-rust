@@ -5,7 +5,7 @@ pub fn main() {
 
     io::stdin().read_line(&mut s).unwrap();
 
-    let s = s.trim_right();
+    let s = s.trim_end();
 
     let result = sort(s);
 
@@ -15,7 +15,8 @@ pub fn main() {
 pub fn sort(s: &str) -> String {
     let mut nums: Vec<u32> = s.split('+').map(|c| c.parse::<u32>().unwrap()).collect();
     nums.sort();
-    let result: String = nums.iter()
+    let result: String = nums
+        .iter()
         .map(|num| num.to_string())
         .collect::<Vec<String>>()
         .as_slice()

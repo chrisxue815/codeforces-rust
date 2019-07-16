@@ -3,7 +3,7 @@ use std::io;
 pub fn main() {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    let line = line.trim_right();
+    let line = line.trim_end();
 
     let output = if hello(&line) { "YES" } else { "NO" };
 

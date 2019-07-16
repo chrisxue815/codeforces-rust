@@ -4,7 +4,7 @@ pub fn main() {
     let stdin = io::stdin();
     let mut line = String::new();
     stdin.read_line(&mut line).unwrap();
-    let line = line.trim_right();
+    let line = line.trim_end();
 
     let dangerous = if is_dangerous(line) { "YES" } else { "NO" };
 

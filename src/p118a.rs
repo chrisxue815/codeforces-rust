@@ -1,10 +1,9 @@
 use std::io;
-use std::ascii::AsciiExt;
 
 pub fn main() {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    let line = line.trim_right();
+    let line = line.trim_end();
 
     print!("{}", modify(&line));
 }

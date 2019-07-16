@@ -1,4 +1,3 @@
-use std::ascii::AsciiExt;
 use std::io;
 use std::str;
 
@@ -22,7 +21,7 @@ impl AsciiCheckExt for u8 {
 pub fn main() {
     let mut line = String::new();
     io::stdin().read_line(&mut line).unwrap();
-    let line = line.trim_right();
+    let line = line.trim_end();
 
     print!("{}", fix_case(line));
 }

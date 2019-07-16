@@ -5,13 +5,13 @@ pub fn main() {
     let stdin = io::stdin();
     let mut line = String::new();
     stdin.read_line(&mut line).unwrap();
-    let n = line.trim_right().parse::<u32>().unwrap();
+    let n = line.trim_end().parse::<u32>().unwrap();
 
     for _ in 0..n {
         let mut line = String::new();
         stdin.read_line(&mut line).unwrap();
 
-        let line = line.trim_right();
+        let line = line.trim_end();
         let line = line.as_bytes();
         let abbr = make_abbr(line);
         let abbr = str::from_utf8(abbr.as_slice()).unwrap();

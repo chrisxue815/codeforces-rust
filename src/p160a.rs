@@ -1,5 +1,4 @@
 use std::io;
-use std::str;
 
 pub fn read_numbers() -> Vec<u32> {
     let mut line = String::new();

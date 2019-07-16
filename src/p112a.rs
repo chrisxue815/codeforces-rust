@@ -1,4 +1,3 @@
-use std::ascii::AsciiExt;
 use std::io;
 
 pub fn main() {
@@ -8,8 +7,8 @@ pub fn main() {
     io::stdin().read_line(&mut a).unwrap();
     io::stdin().read_line(&mut b).unwrap();
 
-    let a = a.trim_right();
-    let b = b.trim_right();
+    let a = a.trim_end();
+    let b = b.trim_end();
 
     let result = compare(a, b);
 

@@ -1,6 +1,5 @@
 // text_io macros
 
-#[macro_export]
 macro_rules! read(
     () => { read!("{}") };
     ($text:expr) => {{
@@ -16,7 +15,6 @@ macro_rules! read(
 );
 
 /// This macro allows to pass several variables so multiple values can be read
-#[macro_export]
 macro_rules! scan(
     ($text:expr, $($arg:expr),*) => {
         scan!(::std::io::stdin().bytes().map(|c| c.unwrap()) => $text, $($arg),*) ;
